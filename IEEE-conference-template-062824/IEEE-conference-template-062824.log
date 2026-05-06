@@ -1,10 +1,10 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.10.6)  23 APR 2026 18:31
+This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.10.6)  6 MAY 2026 21:59
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**c:/Users/HP/Downloads/conference-latex-template/IEEE-conference-template-062824/IEEE-conference-template-062824.tex
-(c:/Users/HP/Downloads/conference-latex-template/IEEE-conference-template-062824/IEEE-conference-template-062824.tex
+**c:/Users/HP/OneDrive/Desktop/VKINS_skuska/IEEE-conference-template-062824/IEEE-conference-template-062824.tex
+(c:/Users/HP/OneDrive/Desktop/VKINS_skuska/IEEE-conference-template-062824/IEEE-conference-template-062824.tex
 LaTeX2e <2024-06-01> patch level 2
 L3 programming layer <2024-09-10>
 (./IEEEtran.cls
@@ -209,11 +209,7 @@ File: l3backend-xetex.def 2024-05-08 L3 backend support: XeTeX
 \l__pdf_internal_box=\box56
 \g__pdf_backend_annotation_int=\count288
 \g__pdf_backend_link_int=\count289
-) (./IEEE-conference-template-062824.aux
-
-LaTeX Warning: Label `fig' multiply defined.
-
-)
+) (./IEEE-conference-template-062824.aux)
 \openout1 = `IEEE-conference-template-062824.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 14.
@@ -324,28 +320,21 @@ LaTeX Font Warning: Font shape `TU/ptm/b/n' undefined
 
 
 LaTeX Font Warning: Font shape `TU/ptm/b/n' undefined
-(Font)              using `TU/ptm/bx/n' instead on input line 47.
+(Font)              using `TU/ptm/bx/n' instead on input line 48.
 
 
-Underfull \hbox (badness 1881) in paragraph at lines 47--49
+Underfull \hbox (badness 1881) in paragraph at lines 48--51
 []\TU/ptm/bx/it/9 Index Terms—CityLearn, energeticka optimalizacia, Q-
  []
 
 
 LaTeX Font Warning: Font shape `TU/ptm/m/sc' undefined
-(Font)              using `TU/ptm/m/n' instead on input line 51.
-
-LaTeX Font Info:    Trying to load font information for U+msa on input line 65.
-(c:/texlive/2024/texmf-dist/tex/latex/amsfonts/umsa.fd
-File: umsa.fd 2013/01/14 v3.01 AMS symbols A
-)
-LaTeX Font Info:    Trying to load font information for U+msb on input line 65.
- (c:/texlive/2024/texmf-dist/tex/latex/amsfonts/umsb.fd
-File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-)
+(Font)              using `TU/ptm/m/n' instead on input line 53.
 
 
-Underfull \hbox (badness 2005) in paragraph at lines 91--92
+
+
+Underfull \hbox (badness 2005) in paragraph at lines 79--80
 \TU/ptm/m/sc/10 tovala zadanie a využívala iba predikované vstupy,
  []
 
@@ -355,42 +344,54 @@ Underfull \hbox (badness 2005) in paragraph at lines 91--92
 
 
 ]
-Underfull \hbox (badness 5771) in paragraph at lines 96--97
-[]\TU/ptm/m/sc/10 Počiatočný agent využíval tabuľkový Q-learning.
- []
-
-
-Underfull \hbox (badness 1997) in paragraph at lines 98--99
-\TU/ptm/m/sc/10 Počas tréningu agent volil akcie pomocou $\OML/cmm/m/it/10 ^^O$\TU/ptm/m/sc/10 -greedy
- []
-
-
-Underfull \hbox (badness 6876) in paragraph at lines 100--101
+LaTeX Font Info:    Trying to load font information for U+msa on input line 86.
+ (c:/texlive/2024/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 86.
+ (c:/texlive/2024/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+Underfull \hbox (badness 6876) in paragraph at lines 88--89
 []\TU/ptm/m/sc/10 Hodnota $\OML/cmm/m/it/10 ^^O$ \TU/ptm/m/sc/10 sa postupne znižovala, pričom bol
  []
 
 File: learning_progress_and_step_reward_first_96_steps_weather_seed_7.png Graphic file (type bmp)
 <learning_progress_and_step_reward_first_96_steps_weather_seed_7.png>
 
-Underfull \hbox (badness 2057) in paragraph at lines 118--119
-[]\TU/ptm/m/sc/10 Zo záverov vyplynulo, že model dosahoval lepšie
- []
-
-
-
-
-Underfull \hbox (badness 4819) in paragraph at lines 122--123
+Underfull \hbox (badness 4819) in paragraph at lines 110--111
 \TU/ptm/m/sc/10 Q-learning experimenty. Stavová reprezentácia bola
  []
 
 
+
+
+LaTeX Font Warning: Font shape `TU/ptm/b/n' undefined
+(Font)              using `TU/ptm/bx/n' instead on input line 117.
+
+
+LaTeX Font Warning: Font shape `TU/ptm/b/n' undefined
+(Font)              using `TU/ptm/bx/n' instead on input line 119.
+
+
+LaTeX Font Warning: Font shape `TU/ptm/b/n' undefined
+(Font)              using `TU/ptm/bx/n' instead on input line 121.
+
+
+LaTeX Font Warning: Font shape `TU/ptm/b/n' undefined
+(Font)              using `TU/ptm/bx/n' instead on input line 123.
+
+
+LaTeX Font Warning: Font shape `TU/ptm/b/n' undefined
+(Font)              using `TU/ptm/bx/n' instead on input line 125.
+
+
+LaTeX Font Warning: Font shape `TU/ptm/b/n' undefined
+(Font)              using `TU/ptm/bx/n' instead on input line 127.
+
+
 LaTeX Font Warning: Font shape `TU/ptm/b/n' undefined
 (Font)              using `TU/ptm/bx/n' instead on input line 129.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 129--130
-[]\TU/ptm/m/sc/10 WeatherOccupancyReward zvyšuje penalizáciu
- []
 
 
 LaTeX Font Warning: Font shape `TU/ptm/b/n' undefined
@@ -401,11 +402,6 @@ LaTeX Font Warning: Font shape `TU/ptm/b/n' undefined
 (Font)              using `TU/ptm/bx/n' instead on input line 133.
 
 
-Underfull \hbox (badness 3930) in paragraph at lines 133--134
-\TU/ptm/m/sc/10 elektriny a podporuje presun spotreby mimo
- []
-
-
 LaTeX Font Warning: Font shape `TU/ptm/b/n' undefined
 (Font)              using `TU/ptm/bx/n' instead on input line 135.
 
@@ -414,118 +410,71 @@ LaTeX Font Warning: Font shape `TU/ptm/b/n' undefined
 (Font)              using `TU/ptm/bx/n' instead on input line 137.
 
 
+Underfull \hbox (badness 1552) in paragraph at lines 137--138
+[]\TU/ptm/m/sc/10 CombinedMultiObjectiveReward spája do jednej
+ []
+
+
+Underfull \hbox (badness 5022) in paragraph at lines 137--138
+\TU/ptm/m/sc/10 teplotný diskomfort a penalizáciu odberových
+ []
+
+
 LaTeX Font Warning: Font shape `TU/ptm/b/n' undefined
 (Font)              using `TU/ptm/bx/n' instead on input line 139.
 
 
-LaTeX Font Warning: Font shape `TU/ptm/b/n' undefined
-(Font)              using `TU/ptm/bx/n' instead on input line 141.
 
-
-LaTeX Font Warning: Font shape `TU/ptm/b/n' undefined
-(Font)              using `TU/ptm/bx/n' instead on input line 143.
-
-
-LaTeX Font Warning: Font shape `TU/ptm/b/n' undefined
-(Font)              using `TU/ptm/bx/n' instead on input line 145.
-
-
-LaTeX Font Warning: Font shape `TU/ptm/b/n' undefined
-(Font)              using `TU/ptm/bx/n' instead on input line 147.
-
-
-LaTeX Font Warning: Font shape `TU/ptm/b/n' undefined
-(Font)              using `TU/ptm/bx/n' instead on input line 149.
-
-
-Underfull \hbox (badness 6575) in paragraph at lines 149--150
-[]\TU/ptm/m/sc/10 CombinedMultiObjectiveReward kombinuje viac
+[2]
+Underfull \hbox (badness 1389) in paragraph at lines 162--163
+\TU/ptm/m/sc/10 a riadeným prieskumom akčného priestoru pomocou
  []
 
 
-LaTeX Font Warning: Font shape `TU/ptm/b/n' undefined
-(Font)              using `TU/ptm/bx/n' instead on input line 151.
 
 
-
-[2]
-LaTeX Font Info:    Trying to load font information for TU+pcr on input line 172.
-LaTeX Font Info:    No file TUpcr.fd. on input line 172.
-
-
-LaTeX Font Warning: Font shape `TU/pcr/m/n' undefined
-(Font)              using `TU/lmr/m/n' instead on input line 172.
+Underfull \hbox (badness 4096) in paragraph at lines 180--181
+[]\TU/ptm/m/sc/10 Takto nastavená implementácia zachováva porov-
+ []
 
 
+Underfull \hbox (badness 5862) in paragraph at lines 184--185
+[]\TU/ptm/m/sc/10 DDPG umožňuje pracovať so spojitým akčným
+ []
 
 
-LaTeX Font Warning: Font shape `TU/ptm/b/n' undefined
-(Font)              using `TU/ptm/bx/n' instead on input line 224.
+Underfull \hbox (badness 2181) in paragraph at lines 188--189
+\TU/ptm/m/sc/10 s konštantným nastavením chladenia. Ako základné
+ []
 
+
+Underfull \hbox (badness 2310) in paragraph at lines 188--189
+\TU/ptm/m/sc/10 poskytovaná prostredím CityLearn, podiel tepelného
+ []
+
+File: ../CityLearn/outputs_ddpg0305_02/q_learning_vs_ddpg_import_discomfort.png Graphic file (type bmp)
+<../CityLearn/outputs_ddpg0305_02/q_learning_vs_ddpg_import_discomfort.png>
 
 
 [3]
 
-LaTeX Font Warning: Font shape `TU/ptm/b/n' undefined
-(Font)              using `TU/ptm/bx/n' instead on input line 264.
 
-
-LaTeX Font Warning: Font shape `TU/ptm/b/n' undefined
-(Font)              using `TU/ptm/bx/n' instead on input line 264.
-
-
-LaTeX Font Warning: Font shape `TU/ptm/b/n' undefined
-(Font)              using `TU/ptm/bx/n' instead on input line 266.
-
-
-LaTeX Font Warning: Font shape `TU/ptm/b/n' undefined
-(Font)              using `TU/ptm/bx/n' instead on input line 266.
-
-
-LaTeX Font Warning: Font shape `TU/ptm/b/n' undefined
-(Font)              using `TU/ptm/bx/n' instead on input line 266.
-
-
-LaTeX Font Warning: Font shape `TU/ptm/b/n' undefined
-(Font)              using `TU/ptm/bx/n' instead on input line 266.
-
-File: fig1.png Graphic file (type bmp)
-<fig1.png>
-
-
-
-Underfull \hbox (badness 4217) in paragraph at lines 330--331
-[]\TU/ptm/m/sc/8 D. P. Kingma and M. Welling, “Auto-encoding varia-
+Underfull \hbox (badness 1571) in paragraph at lines 205--206
+[]\TU/ptm/m/sc/10 Z priebehov učenia vyplýva ďalší dôležitý rozdiel
  []
 
 
-Underfull \hbox (badness 2726) in paragraph at lines 330--331
-\TU/ptm/m/sc/8 tional Bayes,” 2013, arXiv:1312.6114. [Online]. Available:
- []
-
-
-Underfull \hbox (badness 7326) in paragraph at lines 331--332
-[]\TU/ptm/m/sc/8 S. Liu, “Wi-Fi Energy Detection Testbed (12MTC),”
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 331--332
-\TU/ptm/m/sc/8 2023, gitHub repository. [Online]. Available:
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 331--332
-\TU/ptm/m/sc/8 https://github.com/liustone99/Wi-Fi-Energy-Detection-
- []
-
-
-Underfull \hbox (badness 1776) in paragraph at lines 332--333
-[]\TU/ptm/m/sc/8 “Treatment episode data set: discharges (TEDS-D): con-
- []
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
 [4]
+Underfull \hbox (badness 2486) in paragraph at lines 225--226
+[]\TU/ptm/bx/it/8 D. Tang and P. Daoutidis, “Reinforcement learning for
+ []
+
+
+
 
 ** Conference Paper **
 Before submitting the final camera ready copy, remember to:
@@ -539,11 +488,7 @@ Before submitting the final camera ready copy, remember to:
 
 
 
-
-
-[5
-
-] (./IEEE-conference-template-062824.aux)
+[5] (./IEEE-conference-template-062824.aux)
  ***********
 LaTeX2e <2024-06-01> patch level 2
 L3 programming layer <2024-09-10>
@@ -552,17 +497,14 @@ L3 programming layer <2024-09-10>
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-
-LaTeX Warning: There were multiply-defined labels.
-
  ) 
 Here is how much of TeX's memory you used:
- 3810 strings out of 474234
- 61267 string characters out of 5745797
- 472519 words of memory out of 5000000
- 26479 multiletter control sequences out of 15000+600000
- 562948 words of font info for 66 fonts, out of 8000000 for 9000
+ 3774 strings out of 474234
+ 61397 string characters out of 5745797
+ 471390 words of memory out of 5000000
+ 26449 multiletter control sequences out of 15000+600000
+ 559848 words of font info for 54 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 57i,11n,65p,839b,306s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 57i,8n,65p,1114b,270s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on IEEE-conference-template-062824.xdv (5 pages, 193708 bytes).
+Output written on IEEE-conference-template-062824.xdv (5 pages, 218784 bytes).

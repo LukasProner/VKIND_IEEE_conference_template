@@ -40,49 +40,37 @@ Košice, Slovensko
 \maketitle
 
 \begin{abstract}
-Prispevok sa venuje ulohe energetickej optimalizacie inteligentnej budovy na zaklade predpovedi pocasia a obsadenosti miestnosti. Zadanie odporuca vyuzit algoritmy Q-learning a DDPG a po ich implementacii porovnat ich prevadzkove vlastnosti z pohladu uspor energie oproti fixnej strategii, vplyvu roznych reward funkcii na vysledok a casu potrebneho na dosiahnutie stabilneho riesenia. Predkladany text sa zameriava primarne na vetvu riesenia zalozenu na Q-learningu, zatial co algoritmus DDPG je implementovany paralelne v ramci suvisiacej casti projektu.
+
+Prispevok sa venuje ulohe energetickej optimalizacie inteligentnej budovy na zaklade predpovedi pocasia a obsadenosti miestnosti. V rieseni su pouzite algoritmy Q-learning a DDPG, ktore su nasledne porovnavane z pohladu uspor energie oproti fixnej strategii, vplyvu roznych reward funkcii a casu potrebneho na dosiahnutie stabilneho riesenia. Text sa zameriava primarne na vetvu riesenia zalozenu na Q-learningu, zatial co implementacia DDPG je popisana ako paralelna alternativa pre spojity akcny priestor.
 
 \end{abstract}
 
 \begin{IEEEkeywords}
+    
 CityLearn, energeticka optimalizacia, Q-learning, DDPG, obsadenost, predpoved pocasia, inteligentne budovy
 \end{IEEEkeywords}
 
-\section{Introduction}
+\section{Úvod}
 
-Energetická optimalizácia inteligentných budov predstavuje v súčasnosti významnú výzvu, najmä z hľadiska znižovania odberu elektrickej energie zo siete, zvyšovania prevádzkovej efektívnosti a prípravy budov na pokročilé formy prediktívneho riadenia \cite{b1}.
+Energetická optimalizácia inteligentných budov predstavuje v súčasnosti významnú výzvu, najmä z hľadiska znižovania odberu elektrickej energie zo siete, zvyšovania prevádzkovej efektívnosti a prípravy budov na pokročilé formy prediktívneho riadenia \cite{b1,b15}.
 
 Táto práca vychádza z konkrétne definovaného zadania, ktorého cieľom je navrhnúť a natrénovať agenta schopného optimalizovať spotrebu energie v budove na základe predpovedí počasia a informácií o obsadenosti miestností.
 
 Ako vhodné prístupy sú uvažované algoritmy Q-learning a Deep Deterministic Policy Gradient (DDPG). Po ich implementácii budú tieto metódy porovnané z viacerých hľadísk, konkrétne z pohľadu dosiahnutých úspor energie v porovnaní s fixnou riadiacou stratégiou, citlivosti na rôzne návrhy reward funkcie a času potrebného na dosiahnutie stabilného riešenia.
+Agent pracuje s vopred dostupnými informáciami, najmä s predikovanou vonkajšou teplotou, solárnym žiarením a obsadenosťou budovy, a na ich základe volí riadiace akcie pre energeticky efektívnejšiu prevádzku. V rámci práce sú oba prístupy hodnotené pri rovnakých vstupných údajoch a v rovnakom simulačnom prostredí, aby bolo možné priamo porovnať ich správanie pri zhodne formulovaných cieľoch.
 
-\section{Špecifikácia zadania}
-
-Zadanie s názvom \textit{Energetická optimalizácia inteligentnej budovy} je formulované ako úloha naučiť agenta využívajúceho reinforcement learning optimalizovať spotrebu energie v budove na základe predpovedí počasia a informácií o obsadenosti miestností. Ako vhodné algoritmy boli určené Q-learning a \textit{Deep Deterministic Policy Gradient} (DDPG).
-
-Po implementácii jednotlivých prístupov majú byť ich prevádzkové vlastnosti porovnané z viacerých hľadísk:
-\begin{itemize}
-\item dosiahnuté úspory energie v porovnaní s fixnou riadiacou stratégiou,
-\item vplyv rôznych návrhov reward funkcie na správanie agenta,
-\item čas potrebný na dosiahnutie stabilného riešenia.
-\end{itemize}
-
-V praktickej rovine to znamená, že agent pracuje s vopred dostupnými informáciami, najmä s predikovanou vonkajšou teplotou, solárnym žiarením a obsadenosťou budovy, a na ich základe volí riadiace akcie vedúce k energeticky efektívnejšej prevádzke.
-
-Z hľadiska tejto práce je dôležité zdôrazniť, že cieľom nie je iba samotné použitie metód reinforcement learningu, ale predovšetkým riešenie konkrétnej úlohy optimalizácie spotreby energie v budove, kde RL predstavuje nástroj riadenia.
+Podobné smerovanie je v odbornej literatúre už dobre zastúpené. Reinforcement learning bol použitý napríklad na demand response v klastroch menších komerčných budov, na koordinované energetické riadenie viacerých budov aj na experimenty realizované priamo nad prostredím CityLearn, čo potvrdzuje, že zvolený typ formulácie úlohy má oporu v existujúcom výskume \cite{b17,b18,b19,b20}.
 
 
 \section{Prostredie CityLearn}
 
-CityLearn predstavuje open-source simulačné prostredie určené pre reinforcement learning, zamerané na výskum koordinovaného energetického riadenia budov a mestských štvrtí. Umožňuje modelovanie jednotlivých budov spolu s ich riaditeľnými zariadeniami a energetickými subsystémami. Zároveň poskytuje štandardizované rozhranie pre definovanie observácií, akcií, odmeňovacej funkcie (reward) a vyhodnocovanie výkonnosti modelov.
+CityLearn predstavuje open-source simulačné prostredie určené pre reinforcement learning, zamerané na výskum koordinovaného energetického riadenia budov a mestských štvrtí \cite{b1}. Umožňuje modelovanie jednotlivých budov spolu s ich riaditeľnými zariadeniami a energetickými subsystémami. Zároveň poskytuje štandardizované rozhranie pre definovanie observácií, akcií, odmeňovacej funkcie a vyhodnocovanie výkonnosti modelov, čo zodpovedá odporúčanému spôsobu porovnateľného hodnotenia RL prístupov v energetickom riadení budov \cite{b15}.
 
-Pre účely tejto práce je CityLearn obzvlášť vhodný, keďže umožňuje experimentovanie s rôznymi návrhmi reinforcement learning algoritmov v identickom simulačnom prostredí, pričom zabezpečuje konzistentný a porovnateľný spôsob ich evaluácie.
+Pre účely tejto práce je dôležitá najmä možnosť experimentovať s rôznymi reinforcement learning prístupmi v identickom simulačnom prostredí a vyhodnocovať ich rovnakým spôsobom.
 
-V prostredí CityLearn je každá budova reprezentovaná množinou pozorovaných veličín a množinou riaditeľných akcií. Medzi pozorovania patria napríklad predpovede počasia, solárne zisky, informácie o obsadenosti, cena elektrickej energie či aktuálne stavy energetických zásobníkov. Naopak, akčný priestor zahŕňa riadenie chladiacich systémov a v rozšírených konfiguráciách aj nabíjanie a vybíjanie tepelných alebo elektrických zásobníkov.
+V prostredí CityLearn je každá budova reprezentovaná množinou pozorovaných veličín a množinou riaditeľných akcií. Medzi pozorovania patria napríklad predpovede počasia, solárne zisky, informácie o obsadenosti, cena elektrickej energie či aktuálne stavy energetických zásobníkov. Naopak, akčný priestor zahŕňa riadenie chladiacich systémov, nabíjanie a vybíjanie tepelných alebo elektrických zásobníkov.
 
-Ďalšou významnou výhodou prostredia CityLearn je možnosť hodnotiť výsledky pomocou interpretovateľných metrík, ako sú napríklad množstvo importovanej elektriny zo siete, kumulatívny reward či ukazovatele súvisiace s tepelným diskomfortom.
-
-Vďaka tomu je prostredie vhodné nielen na samotný tréning agentov, ale aj na systematické porovnávanie naučených riadiacich politík s jednoduchými referenčnými stratégiami.
+Prostredie zároveň poskytuje interpretovateľné metriky, ako sú množstvo importovanej elektriny zo siete, kumulatívny reward a ukazovatele tepelného diskomfortu, ktoré sú použité aj v tejto práci.
 
 \section{Q-learning}
 
@@ -93,9 +81,9 @@ Prvá implementácia bola navrhnutá tak, aby reflektovala zadanie a využívala
 
 \subsection{Formulácia tabuľkového Q-learningu}
 
-Počiatočný agent využíval tabuľkový Q-learning. Stavový priestor bol diskretizovaný na konečný počet intervalov (bínov) a akčný priestor bol taktiež zredukovaný na malý počet diskrétnych hodnôt riadenia chladenia.
+Počiatočný agent využíval tabuľkový Q-learning \cite{b12,b13}. Stavový priestor bol diskretizovaný na konečný počet intervalov a akčný priestor bol zredukovaný na malý počet diskrétnych hodnôt riadenia chladenia.
 
-Q-tabuľka následne uchovávala odhady kvality vykonania konkrétnej akcie v konkrétnom diskrétnom stave. Počas tréningu agent volil akcie pomocou $\epsilon$-greedy stratégie, ktorá kombinuje exploráciu a exploitáciu.
+Q-tabuľka následne uchovávala odhady kvality vykonania konkrétnej akcie v konkrétnom diskrétnom stave. Počas tréningu agent vyberal akcie pomocou $\epsilon$-greedy stratégie, ktorá vyvažuje skúmanie nových možností a využívanie už získaných poznatkov \cite{b13}.
 
 Hodnota $\epsilon$ sa postupne znižovala, pričom bol zároveň implementovaný adaptívny mechanizmus, ktorý ju dokázal dočasne zvýšiť v prípade stagnácie učenia, teda ak nedochádzalo k zlepšovaniu výkonu agenta.
 
@@ -115,7 +103,7 @@ kde $s$ označuje aktuálny diskrétny stav, $a$ zvolenú akciu, $r$ prijatý re
 \label{fig}
 \end{figure}
 
-Zo záverov vyplynulo, že model dosahoval lepšie výsledky za cenu mierne zvýšeného diskomfortu. Počiatočná formulácia síce zodpovedala zadaniu, no odhalila obmedzenia najmä v podobe príliš minimalistickej stavovej reprezentácie, ktorá nepostačuje pri rozšírení problému o ďalšie zariadenia. Rozhodovanie o zásobníkoch či reakcia na cenové signály vyžadujú dostupnosť relevantných stavových informácií. Ukazuje sa preto, že výkon agenta nezávisí len od množstva dát, ale najmä od kvality a informatívnosti stavovej reprezentácie.
+Počiatočné experimenty ukázali zlepšenie vybraných metrík za cenu mierne zvýšeného diskomfortu. Zároveň sa prejavilo obmedzenie veľmi jednoduchej stavovej reprezentácie, ktorá pri rozšírení problému o ďalšie zariadenia neposkytuje dostatočný opis systému. Rozhodovanie o zásobníkoch a reakcia na cenové signály vyžadujú doplnenie stavových informácií.
 
 \subsection{Prechod k rozšíreným Q-learning experimentom}
 
@@ -123,218 +111,125 @@ Po vytvorení počiatočnej verzie nasledovali rozšírené Q-learning experimen
 
 Zároveň bol rozšírený akčný priestor tak, aby zahŕňal súčasné riadenie zásobníka teplej vody, elektrického zásobníka a chladiaceho systému.
 
-V rozšírenom experimente bolo implementovaných 12 variantov reward funkcie, ktoré menia preferencie agenta pri nezmenenom stavovom a akčnom priestore. Väčšina variantov vychádza z penalizácie odberu elektriny zo siete, pričom sa líšia v tom, aké prevádzkové priority zvýrazňujú (napr. cena elektriny, teplotný komfort alebo stav zásobníkov).
+V rozšírenom experimente bolo implementovaných 12 variantov reward funkcie, ktoré menia preferencie agenta pri nezmenenom stavovom a akčnom priestore. Väčšina variantov vychádza z penalizácie odberu elektriny zo siete, pričom sa líši dôrazom na cenu elektriny, teplotný komfort alebo stav zásobníkov.
 
 \begin{enumerate}
-\item \textbf{WeatherOccupancyReward} zvyšuje penalizáciu odberu pri obsadenej budove a vyššej teplote – agent sa učí aj z rozšíreného stavového priestoru.
+\item \textbf{WeatherOccupancyReward} penalizuje import zo siete, pričom penalizácia rastie pri obsadenej budove a pri vyššej predikovanej vonkajšej teplote.
 
-\item \textbf{GridImportOnlyReward} je najjednoduchší baseline $r=-g$, ktorý penalizuje iba okamžitý import zo siete bez ohľadu na cenu, komfort, predikcie či stav zásobníkov. Slúži ako referenčná politika na porovnanie zlepšenia.
+\item \textbf{GridImportOnlyReward} predstavuje najjednoduchší baseline $r=-g$, ktorý penalizuje iba okamžitý import zo siete bez ďalších členov.
 
-\item \textbf{PricingAwareReward} rozširuje penalizáciu o cenu elektriny a podporuje presun spotreby mimo drahých období.
+\item \textbf{PricingAwareReward} zohľadňuje aktuálnu cenu elektriny, očakávaný rast ceny a priemerný stav zásobníkov. Podporuje nabíjanie pri lacnej energii a penalizuje import alebo predčasné vybíjanie pred drahším obdobím.
 
-\item \textbf{ComfortAwareReward} kombinuje energetický a komfortný cieľ, vrátane penalizácie prehrievania.
+\item \textbf{ComfortAwareReward} kombinuje penalizáciu importu zo siete s penalizáciou teplotného diskomfortu, pričom diskomfort má vyššiu váhu pri obsadenej budove.
 
-\item \textbf{PeakShavingReward} používa kvadratickú penalizáciu $r = -g^2$, ktorá výrazne trestá špičky a vyhladzuje záťaž.
+\item \textbf{PeakShavingReward} používa kvadratickú penalizáciu $r=-g^2$, čím výraznejšie trestá vysoké odberové špičky.
 
-\item \textbf{SolarAlignmentReward} upravuje penalizáciu podľa slnečnej irradiácie, čím podporuje spotrebu pri vyššej produkcii obnoviteľnej energie.
+\item \textbf{SolarAlignmentReward} využíva predikované slnečné žiarenie a stav zásobníkov. Podporuje nabíjanie pri vysokej irradiácii a penalizuje nevyužitý solárny potenciál alebo export pri nedostatočne nabitom úložisku.
 
-\item \textbf{StorageManagementReward} pracuje so stavom zásobníkov a cenou.
+\item \textbf{StorageManagementReward} pracuje s aktuálnou cenou a priemerným stavom zásobníkov. Pri vyššej cene penalizuje nízky stav nabitia, pri nižšej cene naopak príliš vysoké nabitie.
 
-\item \textbf{RampingPenaltyReward} penalizuje prudké zmeny odberu a stabilizuje profil.
+\item \textbf{RampingPenaltyReward} penalizuje nielen import zo siete, ale aj prudké zmeny odberu medzi po sebe nasledujúcimi krokmi.
 
-\item \textbf{TimeOfUseReward} používa hodinový profil: večer vyššia penalizácia ($>1$), noc nižšia ($<1$), nezávisle od ceny a zásobníkov.
+\item \textbf{TimeOfUseReward} používa pevný denný profil penalizácie, v ktorom je večerný import trestaný silnejšie a nočný import miernejšie, nezávisle od explicitnej ceny elektriny.
 
-\item \textbf{SelfSufficiencyReward} penalizuje import a odmeňuje export, čím podporuje energetickú sebestačnosť.
+\item \textbf{SelfSufficiencyReward} penalizuje import zo siete a pri exporte poskytuje kladný bonus, čím podporuje energetickú sebestačnosť.
 
-\item \textbf{CombinedMultiObjectiveReward} kombinuje viac cieľov do váženej funkcie.
+\item \textbf{CombinedMultiObjectiveReward} spája do jednej váženej funkcie import zo siete, cenu elektriny, teplotný diskomfort a penalizáciu odberových špičiek.
 
-\item \textbf{NightPrechargeReward} podporuje nabíjanie v noci a vybíjanie počas špičky.
+\item \textbf{SmartTouReward} podporuje vyšší stav zásobníkov v nočných hodinách a počas večernej špičky silnejšie penalizuje import zo siete.
 \end{enumerate}
 
-\subsection{Equations}
-Number equations consecutively. To make your 
-equations more compact, you may use the solidus (~/~), the exp function, or 
-appropriate exponents. Italicize Roman symbols for quantities and variables, 
-but not Greek symbols. Use a long dash rather than a hyphen for a minus 
-sign. Punctuate equations with commas or periods when they are part of a 
-sentence, as in:
+\section{DDPG}
+
+\subsection{Motivácia pre použitie DDPG}
+
+Po rozšírení problému o súčasné riadenie zásobníka teplej vody, elektrického zásobníka a chladiaceho zariadenia začal počet kombinácií diskrétnych stavov a akcií rýchlo rásť. Z tohto dôvodu bol paralelne implementovaný aj algoritmus \textit{Deep Deterministic Policy Gradient} (DDPG) \cite{b14}, určený pre spojité akčné priestory a často používaný pri úlohách spojitého riadenia.
+
+V navrhnutom riešení je DDPG použitý ako decentralizovaný prístup. Každá budova dostáva vlastné pozorovanie, no všetky budovy využívajú rovnaký naučený mechanizmus výberu akcie. Príbuzné decentralizované alebo distribuované RL prístupy sa objavujú aj v literatúre zameranej na energetický demand response budov \cite{b21,b22}.
+
+\subsection{Reprezentácia stavu a akcií}
+
+DDPG experiment využíva rovnaký výber aktívnych pozorovaní a akcií ako rozšírená Q-learning verzia, aby bolo možné neskôr porovnávať oba prístupy za čo najpodobnejších podmienok. Vstup do agenta preto obsahuje predikované hodnoty vonkajšej teploty, difúzneho a priameho solárneho žiarenia, aktuálnu a predikovanú cenu elektriny, stav nabitia tepelného a elektrického zásobníka a informáciu o obsadenosti budovy.
+
+Na akčnej strane agent generuje tri spojité veličiny: riadenie zásobníka teplej vody, riadenie elektrického zásobníka a riadenie chladenia. Výstup aktora je najprv obmedzený funkciou $\tanh$ do intervalu $[-1,1]$ a následne lineárne preškálovaný na limity akčného priestoru prostredia.
+
+Jednotlivé pozorovania majú odlišné rozsahy, preto sú pred vstupom do neurónovej siete normalizované podľa dolnej a hornej hranice pozorovacieho priestoru.
+
+\subsection{Architektúra agenta a proces učenia}
+
+Implementovaný agent pozostáva z dvojice neurónových sietí typu actor--critic. Actor prijíma normalizovaný stav a vracia spojitú akciu, pričom critic odhaduje hodnotu dvojice stav--akcia. Obe siete majú dve plne prepojené skryté vrstvy s aktivačnou funkciou ReLU, pričom po skúmaní a opakovanom skúšaní rôznych konfigurácií bola ako stabilný kompromis medzi presnosťou a náročnosťou zvolená šírka 256 neurónov v každej skrytej vrstve. Actor používa na výstupe funkciu $\tanh$, critic vracia skalárny odhad hodnoty $Q(s,a)$.
+
+Stabilita učenia je podporená tromi mechanizmami: \textit{replay buffer}, cieľovými sieťami actor\_target a critic\_target a riadeným prieskumom akčného priestoru pomocou gaussovského šumu pridávaného k akcii počas tréningu \cite{b14}.
+
+Aktualizácia critica vychádza z Bellmanovej rovnice. Pre cieľovú hodnotu sa používa nasledujúci vzťah
+
 \begin{equation}
-a+b=\gamma\label{eq}
+y = r + \gamma (1-d)Q_{\text{target}}\left(s',\mu_{\text{target}}(s')\right),
 \end{equation}
 
-Be sure that the 
-symbols in your equation have been defined before or immediately following 
-the equation. Use ``\eqref{eq}'', not ``Eq.~\eqref{eq}'' or ``equation \eqref{eq}'', except at 
-the beginning of a sentence: ``Equation \eqref{eq} is . . .''
+Critic sa učí minimalizovať kvadratickú chybu medzi aktuálnym odhadom $Q(s,a)$ a cieľom $y$. Actor sa učí produkovať akcie maximalizujúce odhadovanú hodnotu kritika. V implementácii sú obe siete optimalizované pomocou algoritmu Adam \cite{b16}.
 
-\subsection{\LaTeX-Specific Advice}
+\subsection{Použité experimentálne nastavenie}
 
-Please use ``soft'' (e.g., \verb|\eqref{Eq}|) cross references instead
-of ``hard'' references (e.g., \verb|(1)|). That will make it possible
-to combine sections, add equations, or change the order of figures or
-citations without having to go through the file line by line.
+Rovnako ako pri Q-learning experimentoch sa aj pri DDPG zachováva pevná referenčná stratégia, ktorá slúži ako baseline pre neskoršie vyhodnotenie úspor. DDPG agent je trénovaný pre rovnakú množinu reward funkcií ako Q-learning verzia.
 
-Please don't use the \verb|{eqnarray}| equation environment. Use
-\verb|{align}| or \verb|{IEEEeqnarray}| instead. The \verb|{eqnarray}|
-environment leaves unsightly spaces around relation symbols.
+Pri hyperparametroch, ktoré majú v DDPG zásadný vplyv na kvalitu učenia, neboli hodnoty prevzaté náhodne, ale zvolené po skúmaní a opakovanom skúšaní viacerých nastavení. Vo finálnej konfigurácii boli použité rýchlosti učenia $10^{-4}$ pre actor a $10^{-3}$ pre critic, diskontný faktor $\gamma = 0.95$, koeficient mäkkej aktualizácie $\tau = 0.005$, minibatch veľkosti 128, replay buffer s kapacitou 100000 prechodov a warmup fáza v dĺžke 1000 krokov. Explorácia počas tréningu využívala gaussovský šum s počiatočnou úrovňou 0.20, ktorý sa po epizódach tlmil faktorom 0.995 až po minimálnu hodnotu 0.03.
 
-Please note that the \verb|{subequations}| environment in {\LaTeX}
-will increment the main equation counter even when there are no
-equation numbers displayed. If you forget that, you might write an
-article in which the equation numbers skip from (17) to (20), causing
-the copy editors to wonder if you've discovered a new method of
-counting.
+Po každej epizóde sa ukladá celkový reward, priemerná strata actor siete, priemerná strata critic siete a aktuálna úroveň prieskumného šumu. Zaznamenáva sa aj odhad momentu stabilizácie učenia založený na porovnaní kĺzavých priemerov rewardu. Pri vyhodnotení naučenej politiky sa ukladajú trajektórie spotreby, kumulatívny reward, agregovaný import a export elektriny a metriky poskytované prostredím CityLearn.
 
-{\BibTeX} does not work by magic. It doesn't get the bibliographic
-data from thin air but from .bib files. If you use {\BibTeX} to produce a
-bibliography you must send the .bib files. 
+Takto nastavená implementácia zachováva porovnateľnosť s Q-learning vetvou, pretože experimenty používajú rovnaké budovy, rovnaký výber pozorovaní, rovnaké typy reward funkcií a rovnaký spôsob finálnej evaluácie.
 
-{\LaTeX} can't read your mind. If you assign the same label to a
-subsubsection and a table, you might find that Table I has been cross
-referenced as Table IV-B3. 
+\subsection{Charakteristika pristupu}
 
-{\LaTeX} does not have precognitive abilities. If you put a
-\verb|\label| command before the command that updates the counter it's
-supposed to be using, the label will pick up the last counter to be
-cross referenced instead. In particular, a \verb|\label| command
-should not go before the caption of a figure or a table.
+DDPG umožňuje pracovať so spojitým akčným priestorom bez explicitnej diskretizácie riadených zásahov. V porovnaní s tabuľkovým Q-learningom však ide o prístup citlivejší na nastavenie hyperparametrov, kvalitu reward funkcie a stabilitu tréningu. Pri jeho hodnotení je preto potrebné sledovať nielen finálne KPI, ale aj priebeh učenia naprieč jednotlivými reward variantmi.
 
-Do not use \verb|\nonumber| inside the \verb|{array}| environment. It
-will not stop equation numbers inside \verb|{array}| (there won't be
-any anyway) and it might stop a wanted equation number in the
-surrounding equation.
+\section{Vyhodnotenie a porovnanie pristupov}
 
-\subsection{Some Common Mistakes}\label{SCM}
-\begin{itemize}
-\item The word ``data'' is plural, not singular.
-\item The subscript for the permeability of vacuum $\mu_{0}$, and other common scientific constants, is zero with subscript formatting, not a lowercase letter ``o''.
-\item In American English, commas, semicolons, periods, question and exclamation marks are located within quotation marks only when a complete thought or name is cited, such as a title or full quotation. When quotation marks are used, instead of a bold or italic typeface, to highlight a word or phrase, punctuation should appear outside of the quotation marks. A parenthetical phrase or statement at the end of a sentence is punctuated outside of the closing parenthesis (like this). (A parenthetical sentence is punctuated within the parentheses.)
-\item A graph within a graph is an ``inset'', not an ``insert''. The word alternatively is preferred to the word ``alternately'' (unless you really mean something that alternates).
-\item Do not use the word ``essentially'' to mean ``approximately'' or ``effectively''.
-\item In your paper title, if the words ``that uses'' can accurately replace the word ``using'', capitalize the ``u''; if not, keep using lower-cased.
-\item Be aware of the different meanings of the homophones ``affect'' and ``effect'', ``complement'' and ``compliment'', ``discreet'' and ``discrete'', ``principal'' and ``principle''.
-\item Do not confuse ``imply'' and ``infer''.
-\item The prefix ``non'' is not a word; it should be joined to the word it modifies, usually without a hyphen.
-\item There is no period after the ``et'' in the Latin abbreviation ``et al.''.
-\item The abbreviation ``i.e.'' means ``that is'', and the abbreviation ``e.g.'' means ``for example''.
-\end{itemize}
-An excellent style manual for science writers is \cite{b7}.
+Vyhodnotenie bolo realizované voči fixnej stratégii s konštantným nastavením chladenia. Ako základné porovnávacie ukazovatele boli použité celkový import elektriny zo siete, pomerová nákladová metrika \textit{cost\_total} poskytovaná prostredím CityLearn, podiel tepelného diskomfortu a priebeh učenia. Referenčná fixná stratégia dosiahla celkový import 4121.091~kWh pri diskomforte 0.837, voči čomu boli porovnávané všetky reward varianty.
 
-\subsection{Authors and Affiliations}\label{AAA}
-\textbf{The class file is designed for, but not limited to, six authors.} A 
-minimum of one author is required for all conference articles. Author names 
-should be listed starting from left to right and then moving down to the 
-next line. This is the author sequence that will be used in future citations 
-and by indexing services. Names should not be listed in columns nor group by 
-affiliation. Please keep your affiliations as succinct as possible (for 
-example, do not differentiate among departments of the same organization).
 
-\subsection{Identify the Headings}\label{ITH}
-Headings, or heads, are organizational devices that guide the reader through 
-your paper. There are two types: component heads and text heads.
+\begin{figure*}[t]
+\centering
+\includegraphics[width=0.85\textwidth]{../CityLearn/outputs_ddpg0305_02/q_learning_vs_ddpg_import_discomfort.png}
+\caption{Porovnanie Q-learning a DDPG reward variantov z pohľadu celkového importu elektriny zo siete a podielu tepelného diskomfortu.}
+\label{fig:q_vs_ddpg_import_discomfort}
+\end{figure*}
 
-Component heads identify the different components of your paper and are not 
-topically subordinate to each other. Examples include Acknowledgments and 
-References and, for these, the correct style to use is ``Heading 5''. Use 
-``figure caption'' for your Figure captions, and ``table head'' for your 
-table title. Run-in heads, such as ``Abstract'', will require you to apply a 
-style (in this case, italic) in addition to the style provided by the drop 
-down menu to differentiate the head from the text.
 
-Text heads organize the topics on a relational, hierarchical basis. For 
-example, the paper title is the primary text head because all subsequent 
-material relates and elaborates on this one topic. If there are two or more 
-sub-topics, the next level head (uppercase Roman numerals) should be used 
-and, conversely, if there are not at least two sub-topics, then no subheads 
-should be introduced.
+Pri Q-learning vetve sa potvrdilo, že voľba reward funkcie zásadne mení kompromis medzi úsporou energie a komfortom. Najvyššie úspory dosiahli varianty \textit{Energy-only} a \textit{Storage}, ktoré znížili import na približne 1126~kWh, teda o 72.7~\% oproti fixnej stratégii. Veľmi podobne dopadli aj rewardy \textit{Weather}, \textit{Ramping}, \textit{TimeOfUse} a \textit{SelfSufficiency}, ktoré sa pohybovali približne v intervale 70 až 72~\% úspory. Tieto výsledky však boli dosiahnuté za cenu vysokého diskomfortu, typicky v rozsahu 0.93 až 0.96, teda horšieho než pri fixnej stratégii. Naopak, rewardy \textit{Comfort} a \textit{Combined} dokázali diskomfort znížiť na 0.633, respektíve 0.438, no za cenu výrazne nižšej energetickej úspory 12.3~\% a 28.4~\%. Najslabšie dopadol v Q-learning vetve \textit{Pricing} reward, ktorý pri súčasnom nastavení dosiahol iba 6.35~\% úspory, a teda nepotvrdil očakávanie, že samotná cenová informácia bude postačovať na robustné riadenie.
 
-\subsection{Figures and Tables}\label{FAT}
-\paragraph{Positioning Figures and Tables} Place figures and tables at the top and 
-bottom of columns. Avoid placing them in the middle of columns. Large 
-figures and tables may span across both columns. Figure captions should be 
-below the figures; table heads should appear above the tables. Insert 
-figures and tables after they are cited in the text. Use the abbreviation 
-``Fig.~\ref{fig}'', even at the beginning of a sentence.
+DDPG vetva vo väčšine energeticky orientovaných rewardov dosiahla ešte nižší import zo siete než Q-learning. Najlepšie výsledky dosiahli varianty \textit{Energy-only}, \textit{Storage}, \textit{Peak-shaving} a \textit{SelfSufficiency}, ktoré znížili import približne na 1054 až 1056~kWh, čo zodpovedá úspore okolo 74.4~\%. Podobne dopadli aj \textit{Weather}, \textit{Ramping} a \textit{TimeOfUse}, všetky so znížením importu približne o 74~\%. Súčasne dosiahli tieto varianty aj najnižšie hodnoty pomerovej metriky \textit{cost\_total}, približne 0.383 až 0.400, teda lepšie než najúspešnejšie Q-learning varianty s minimom okolo 0.415. Cenou za túto výkonnosť bol opäť veľmi vysoký diskomfort, spravidla okolo 0.978, čo indikuje, že agent sa pri týchto rewardoch naučil správanie silne preferujúce minimalizáciu importu bez dostatočnej ochrany komfortu.
 
-\begin{table}[htbp]
-\caption{Table Type Styles}
-\begin{center}
-\begin{tabular}{|c|c|c|c|}
-\hline
-\textbf{Table}&\multicolumn{3}{|c|}{\textbf{Table Column Head}} \\
-\cline{2-4} 
-\textbf{Head} & \textbf{\textit{Table column subhead}}& \textbf{\textit{Subhead}}& \textbf{\textit{Subhead}} \\
-\hline
-copy& More table copy$^{\mathrm{a}}$& &  \\
-\hline
-\multicolumn{4}{l}{$^{\mathrm{a}}$Sample of a Table footnote.}
-\end{tabular}
-\label{tab1}
-\end{center}
-\end{table}
+Zaujímavejšie výsledky priniesli v DDPG vetve rewardy zamerané na vyváženie viacerých cieľov. \textit{Comfort} reward znížil diskomfort na 0.313 a pritom stále zachoval úsporu 31.5~\%, čím výrazne prekonal Q-learning variant s rovnakou motiváciou. Ešte vyváženejšie sa javil \textit{Combined} reward, ktorý dosiahol najnižší diskomfort spomedzi všetkých skúmaných DDPG nastavení, konkrétne 0.256, pri stále nezanedbateľnej úspore 36.2~\%. To naznačuje, že pri spojitom riadení dokáže DDPG lepšie využiť viacúčelovú reward formuláciu než tabuľkový Q-learning. Zároveň sa ukázalo, že \textit{Pricing} reward bol aj v DDPG menej presvedčivý než energeticky orientované rewardy, hoci stále prekonal svoju Q-learning alternatívu a priniesol približne 38.2~\% úspory pri diskomforte 0.658.
 
-\begin{figure}[htbp]
-\centerline{\includegraphics{fig1.png}}
-\caption{Example of a figure caption.}
-\label{fig}
-\end{figure}
+Z priebehov učenia vyplýva ďalší dôležitý rozdiel medzi oboma prístupmi. Q-learning vyžadoval vyšší počet epizód, kým sa priebeh rolling rewardu začal viditeľne stabilizovať, a tento moment bol silne závislý od konkrétnej reward funkcie. Naopak, DDPG vo viacerých reward variantoch vykazoval rýchlejší nárast výkonu už v prvých desiatkach epizód. Formálny odhad stabilizácie použitý v implementácii je zámerne konzervatívny, keďže porovnáva dve po sebe idúce okná rewardu, a preto môže vracať neskorší moment, než aký naznačuje vizuálne posúdenie grafov. Aj napriek tomu však dostupné priebehy naznačujú, že DDPG pri menšom počte tréningových epizód dosahuje konkurencieschopné alebo lepšie energetické výsledky než Q-learning.
 
-Figure Labels: Use 8 point Times New Roman for Figure labels. Use words 
-rather than symbols or abbreviations when writing Figure axis labels to 
-avoid confusing the reader. As an example, write the quantity 
-``Magnetization'', or ``Magnetization, M'', not just ``M''. If including 
-units in the label, present them within parentheses. Do not label axes only 
-with units. In the example, write ``Magnetization (A/m)'' or ``Magnetization 
-\{A[m(1)]\}'', not just ``A/m''. Do not label axes with a ratio of 
-quantities and units. For example, write ``Temperature (K)'', not 
-``Temperature/K''.
+Celkové porovnanie preto ukazuje, že medzi sledovanými prístupmi neexistuje jednoznačne najlepšia reward funkcia bez ohľadu na cieľ optimalizácie. Ak je prioritou maximalizácia energetickej úspory a zníženie pomerovej metriky nákladov, najlepšie dopadli energeticky orientované DDPG rewardy. Ak je dôležitá aj udržateľná úroveň komfortu, vhodnejšie sa javia viacúčelové rewardy, najmä \textit{Combined} a \textit{Comfort} v DDPG vetve. Q-learning zostáva zaujímavý svojou jednoduchosťou, interpretovateľnosťou a menšími nárokmi na implementáciu, no pri rozšírenom trojrozmernom akčnom priestore už zaostáva za DDPG v schopnosti nájsť priaznivý kompromis medzi úsporou energie a kvalitou regulácie.
 
-\section*{Acknowledgment}
+\section{Zaver}
 
-The preferred spelling of the word ``acknowledgment'' in America is without 
-an ``e'' after the ``g''. Avoid the stilted expression ``one of us (R. B. 
-G.) thanks $\ldots$''. Instead, try ``R. B. G. thanks$\ldots$''. Put sponsor 
-acknowledgments in the unnumbered footnote on the first page.
+Práca ukázala, že reinforcement learning je použiteľný na riadenie energeticky flexibilnej budovy aj v prostredí s predikovaným počasím, cenou elektriny a informáciou o obsadenosti. Q-learning poskytol funkčný a dobre interpretovateľný základ, no pri rozšírení akčného priestoru sa jeho limity prejavili najmä v horšom kompromise medzi úsporou a komfortom. DDPG naopak potvrdil vhodnosť pre spojité riadenie, keď vo väčšine energeticky orientovaných rewardov dosahoval nižší import aj priaznivejšiu nákladovú metriku než Q-learning.
+
+Zároveň sa ukázalo, že samotná minimalizácia importu nie je dostatočná, ak vedie k neprimeranému zhoršeniu komfortu. Z pohľadu praktickej použiteľnosti sa preto ako najsľubnejšie javia viacúčelové reward funkcie, ktoré zahŕňajú nielen spotrebu energie, ale aj komfort a prípadne ďalšie prevádzkové kritériá. Za najvyváženejšie riešenia možno na základe dostupných výsledkov považovať najmä \textit{Combined} a \textit{Comfort} reward v DDPG vetve, ktoré dosiahli výrazne lepší kompromis medzi úsporou a diskomfortom než väčšina ostatných testovaných variantov.
+
 
 \section*{References}
-
-Please number citations consecutively within brackets \cite{b1}. The 
-sentence punctuation follows the bracket \cite{b2}. Refer simply to the reference 
-number, as in \cite{b3}---do not use ``Ref. \cite{b3}'' or ``reference \cite{b3}'' except at 
-the beginning of a sentence: ``Reference \cite{b3} was the first $\ldots$''
-
-Number footnotes separately in superscripts. Place the actual footnote at 
-the bottom of the column in which it was cited. Do not put footnotes in the 
-abstract or reference list. Use letters for table footnotes.
-
-Unless there are six authors or more give all authors' names; do not use 
-``et al.''. Papers that have not been published, even if they have been 
-submitted for publication, should be cited as ``unpublished'' \cite{b4}. Papers 
-that have been accepted for publication should be cited as ``in press'' \cite{b5}. 
-Capitalize only the first word in a paper title, except for proper nouns and 
-element symbols.
-
-For papers published in translation journals, please give the English 
-citation first, followed by the original foreign-language citation \cite{b6}.
 
 \begin{thebibliography}{00}
 \bibitem{b1} J. R. Vázquez-Canteli, Z. Nagy, S. Dey, and G. Henze, 
 ``CityLearn: Standardizing Research in Multi-Agent Reinforcement Learning for Demand Response and Urban Energy Management,'' 
 The University of Texas at Austin and University of Colorado Boulder.
-\bibitem{b2} J. Clerk Maxwell, A Treatise on Electricity and Magnetism, 3rd ed., vol. 2. Oxford: Clarendon, 1892, pp.68--73.
-\bibitem{b3} I. S. Jacobs and C. P. Bean, ``Fine particles, thin films and exchange anisotropy,'' in Magnetism, vol. III, G. T. Rado and H. Suhl, Eds. New York: Academic, 1963, pp. 271--350.
-\bibitem{b4} K. Elissa, ``Title of paper if known,'' unpublished.
-\bibitem{b5} R. Nicole, ``Title of paper with only first word capitalized,'' J. Name Stand. Abbrev., in press.
-\bibitem{b6} Y. Yorozu, M. Hirano, K. Oka, and Y. Tagawa, ``Electron spectroscopy studies on magneto-optical media and plastic substrate interface,'' IEEE Transl. J. Magn. Japan, vol. 2, pp. 740--741, August 1987 [Digests 9th Annual Conf. Magnetics Japan, p. 301, 1982].
-\bibitem{b7} M. Young, The Technical Writer's Handbook. Mill Valley, CA: University Science, 1989.
-\bibitem{b8} D. P. Kingma and M. Welling, ``Auto-encoding variational Bayes,'' 2013, arXiv:1312.6114. [Online]. Available: https://arxiv.org/abs/1312.6114
-\bibitem{b9} S. Liu, ``Wi-Fi Energy Detection Testbed (12MTC),'' 2023, gitHub repository. [Online]. Available: https://github.com/liustone99/Wi-Fi-Energy-Detection-Testbed-12MTC
-\bibitem{b10} ``Treatment episode data set: discharges (TEDS-D): concatenated, 2006 to 2009.'' U.S. Department of Health and Human Services, Substance Abuse and Mental Health Services Administration, Office of Applied Studies, August, 2013, DOI:10.3886/ICPSR30122.v2
-\bibitem{b11} K. Eves and J. Valasek, ``Adaptive control for singularly perturbed systems examples,'' Code Ocean, Aug. 2023. [Online]. Available: https://codeocean.com/capsule/4989235/tree
+\bibitem{b12} C. J. C. H. Watkins and P. Dayan, ``Q-learning,'' Machine Learning, vol. 8, no. 3--4, pp. 279--292, 1992.
+\bibitem{b13} R. S. Sutton and A. G. Barto, Reinforcement Learning: An Introduction, 2nd ed. Cambridge, MA, USA: MIT Press, 2018.
+\bibitem{b14} T. P. Lillicrap, J. J. Hunt, A. Pritzel, N. Heess, T. Erez, Y. Tassa, D. Silver, and D. Wierstra, ``Continuous control with deep reinforcement learning,'' 2015, arXiv:1509.02971. [Online]. Available: https://arxiv.org/abs/1509.02971
+\bibitem{b15} D. Tang and P. Daoutidis, ``Reinforcement learning for building energy management: A review,'' Current Sustainable/Renewable Energy Reports, vol. 8, pp. 71--84, 2021.
+\bibitem{b16} D. P. Kingma and J. Ba, ``Adam: A method for stochastic optimization,'' 2014, arXiv:1412.6980. [Online]. Available: https://arxiv.org/abs/1412.6980
+\bibitem{b17} D. Deltetto, D. Coraci, G. Pinto, M. S. Piscitelli, and A. Capozzoli, ``Exploring the potentialities of deep reinforcement learning for incentive-based demand response in a cluster of small commercial buildings,'' Energies, vol. 14, no. 10, p. 2933, 2021.
+\bibitem{b18} G. Pinto, M. S. Piscitelli, J. R. V\'{a}zquez-Canteli, Z. Nagy, and A. Capozzoli, ``Coordinated energy management for a cluster of buildings through deep reinforcement learning,'' Energy, vol. 229, p. 120725, 2021.
+\bibitem{b19} A. Kathirgamanathan, K. Twardowski, E. Mangina, and D. P. Finn, ``A Centralised Soft Actor Critic Deep Reinforcement Learning Approach to District Demand Side Management through CityLearn,'' in Proceedings of the 1st International Workshop on Reinforcement Learning for Energy Management in Buildings \& Cities, 2020, pp. 11--14.
+\bibitem{b20} J. R. V\'{a}zquez-Canteli, J. K\"{a}mpf, G. Henze, and Z. Nagy, ``CityLearn v1.0: An OpenAI Gym Environment for Demand Response with Deep Reinforcement Learning,'' in Proceedings of the 6th ACM International Conference on Systems for Energy-Efficient Buildings, Cities, and Transportation, 2019, pp. 356--357.
+\bibitem{b21} R. Glatt, F. L. da Silva, B. Soper, W. A. Dawson, E. Rusu, and R. A. Goldhahn, ``Collaborative energy demand response with decentralized actor and centralized critic,'' in Proceedings of the 8th ACM International Conference on Systems for Energy-Efficient Buildings, Cities, and Transportation, 2021, pp. 333--337.
+\bibitem{b22} J. R. Vazquez-Canteli, G. Henze, and Z. Nagy, ``MARLISA: Multi-Agent Reinforcement Learning with Iterative Sequential Action Selection for Load Shaping of Grid-Interactive Connected Buildings,'' in Proceedings of the 7th ACM International Conference on Systems for Energy-Efficient Buildings, Cities, and Transportation, 2020, pp. 170--179.
 \end{thebibliography}
-
-\vspace{12pt}
-\color{red}
-IEEE conference templates contain guidance text for composing and formatting conference papers. Please ensure that all template text is removed from your conference paper prior to submission to the conference. Failure to remove the template text from your paper may result in your paper not being published.
 
 \end{document}
