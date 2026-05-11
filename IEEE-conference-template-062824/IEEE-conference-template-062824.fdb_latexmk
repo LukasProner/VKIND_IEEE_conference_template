@@ -1,15 +1,15 @@
 # Fdb version 4
-["xdvipdfmx"] 1778097586.6834 "IEEE-conference-template-062824.xdv" "IEEE-conference-template-062824.pdf" "IEEE-conference-template-062824" 1778097589.891 0
-  "IEEE-conference-template-062824.xdv" 1778097586 218784 23fe960a6d518921d6ad9a49e18fcc92 "xelatex"
+["xdvipdfmx"] 1778526829.46226 "IEEE-conference-template-062824.xdv" "IEEE-conference-template-062824.pdf" "IEEE-conference-template-062824" 1778526832.31679 0
+  "IEEE-conference-template-062824.xdv" 1778526829 216924 ccb9d4a4974ce708daec4218416aa558 "xelatex"
   (generated)
   "IEEE-conference-template-062824.pdf"
   (rewritten before read)
-["xelatex"] 1778097585.17235 "c:/Users/HP/OneDrive/Desktop/VKINS_skuska/IEEE-conference-template-062824/IEEE-conference-template-062824.tex" "IEEE-conference-template-062824.xdv" "IEEE-conference-template-062824" 1778097589.88563 0
-  "../CityLearn/outputs_ddpg0305_02/q_learning_vs_ddpg_import_discomfort.png" 1778097378 222310 c432a5bb16095ceaafd915501aa79522 ""
-  "IEEE-conference-template-062824.aux" 1778097586 2802 8fb46c84751cfc9d56bee6eedc048097 "xelatex"
-  "IEEE-conference-template-062824.tex" 1778097582 25298 c32c6ac25fba58541699e4d9c359c394 ""
+["xelatex"] 1778526827.12393 "c:/Users/HP/OneDrive/Desktop/VKIND_github/VKIND_IEEE_conference_template/IEEE-conference-template-062824/IEEE-conference-template-062824.tex" "IEEE-conference-template-062824.xdv" "IEEE-conference-template-062824" 1778526832.31142 0
+  "../q_learning_vs_ddpg_import_discomfort.png" 1778097378 222310 c432a5bb16095ceaafd915501aa79522 ""
+  "IEEE-conference-template-062824.aux" 1778526829 2765 9ea3d5605b657d7eabac13f5025d9268 "xelatex"
+  "IEEE-conference-template-062824.tex" 1778526824 25072 d39ae267c4b7fe0f0c7b573f2105874d ""
   "IEEEtran.cls" 1440654524 288304 5b2e4fa15b0f7eabb840ebf67df4c0f7 ""
-  "c:/Users/HP/OneDrive/Desktop/VKINS_skuska/IEEE-conference-template-062824/IEEE-conference-template-062824.tex" 1778097582 25298 c32c6ac25fba58541699e4d9c359c394 ""
+  "c:/Users/HP/OneDrive/Desktop/VKIND_github/VKIND_IEEE_conference_template/IEEE-conference-template-062824/IEEE-conference-template-062824.tex" 1778526824 25072 d39ae267c4b7fe0f0c7b573f2105874d ""
   "c:/texlive/2024/texmf-dist/fonts/map/fontname/texfonts.map" 1728206116 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "c:/texlive/2024/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1728203658 1004 54797486969f23fa377b128694d548df ""
   "c:/texlive/2024/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam10.tfm" 1728203658 916 f87d7c45f9c908e672703b83b72241a3 ""

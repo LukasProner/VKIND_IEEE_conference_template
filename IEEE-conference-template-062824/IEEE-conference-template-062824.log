@@ -1,10 +1,10 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.10.6)  6 MAY 2026 21:59
+This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2024.10.6)  11 MAY 2026 21:13
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**c:/Users/HP/OneDrive/Desktop/VKINS_skuska/IEEE-conference-template-062824/IEEE-conference-template-062824.tex
-(c:/Users/HP/OneDrive/Desktop/VKINS_skuska/IEEE-conference-template-062824/IEEE-conference-template-062824.tex
+**c:/Users/HP/OneDrive/Desktop/VKIND_github/VKIND_IEEE_conference_template/IEEE-conference-template-062824/IEEE-conference-template-062824.tex
+(c:/Users/HP/OneDrive/Desktop/VKIND_github/VKIND_IEEE_conference_template/IEEE-conference-template-062824/IEEE-conference-template-062824.tex
 LaTeX2e <2024-06-01> patch level 2
 L3 programming layer <2024-09-10>
 (./IEEEtran.cls
@@ -452,8 +452,8 @@ Underfull \hbox (badness 2310) in paragraph at lines 188--189
 \TU/ptm/m/sc/10 poskytovaná prostredím CityLearn, podiel tepelného
  []
 
-File: ../CityLearn/outputs_ddpg0305_02/q_learning_vs_ddpg_import_discomfort.png Graphic file (type bmp)
-<../CityLearn/outputs_ddpg0305_02/q_learning_vs_ddpg_import_discomfort.png>
+File: ../q_learning_vs_ddpg_import_discomfort.png Graphic file (type bmp)
+<../q_learning_vs_ddpg_import_discomfort.png>
 
 
 [3]
@@ -469,11 +469,6 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 [4]
-Underfull \hbox (badness 2486) in paragraph at lines 225--226
-[]\TU/ptm/bx/it/8 D. Tang and P. Daoutidis, “Reinforcement learning for
- []
-
-
 
 
 ** Conference Paper **
@@ -499,12 +494,12 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 3774 strings out of 474234
- 61397 string characters out of 5745797
- 471390 words of memory out of 5000000
- 26449 multiletter control sequences out of 15000+600000
+ 3773 strings out of 474234
+ 61215 string characters out of 5745797
+ 471386 words of memory out of 5000000
+ 26448 multiletter control sequences out of 15000+600000
  559848 words of font info for 54 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 57i,8n,65p,1114b,270s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 57i,8n,65p,1145b,270s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on IEEE-conference-template-062824.xdv (5 pages, 218784 bytes).
+Output written on IEEE-conference-template-062824.xdv (5 pages, 216924 bytes).
