@@ -1,23 +1,30 @@
 # Fdb version 4
-["xdvipdfmx"] 1778526829.46226 "IEEE-conference-template-062824.xdv" "IEEE-conference-template-062824.pdf" "IEEE-conference-template-062824" 1778526832.31679 0
-  "IEEE-conference-template-062824.xdv" 1778526829 216924 ccb9d4a4974ce708daec4218416aa558 "xelatex"
+["xdvipdfmx"] 1778925328.13886 "IEEE-conference-template-062824.xdv" "IEEE-conference-template-062824.pdf" "IEEE-conference-template-062824" 1778925330.95861 0
+  "IEEE-conference-template-062824.xdv" 1778925327 235108 e0a57532a87a7674f1291636cc5ed7b3 "xelatex"
   (generated)
   "IEEE-conference-template-062824.pdf"
   (rewritten before read)
-["xelatex"] 1778526827.12393 "c:/Users/HP/OneDrive/Desktop/VKIND_github/VKIND_IEEE_conference_template/IEEE-conference-template-062824/IEEE-conference-template-062824.tex" "IEEE-conference-template-062824.xdv" "IEEE-conference-template-062824" 1778526832.31142 0
+["xelatex"] 1778925326.66585 "c:/Users/HP/OneDrive/Desktop/VKIND_github/VKIND_IEEE_conference_template/IEEE-conference-template-062824/IEEE-conference-template-062824.tex" "IEEE-conference-template-062824.xdv" "IEEE-conference-template-062824" 1778925330.95208 0
   "../q_learning_vs_ddpg_import_discomfort.png" 1778097378 222310 c432a5bb16095ceaafd915501aa79522 ""
-  "IEEE-conference-template-062824.aux" 1778526829 2765 9ea3d5605b657d7eabac13f5025d9268 "xelatex"
-  "IEEE-conference-template-062824.tex" 1778526824 25072 d39ae267c4b7fe0f0c7b573f2105874d ""
+  "IEEE-conference-template-062824.aux" 1778925327 3076 ea3a063d6e9f987a7bc367f43463d282 "xelatex"
+  "IEEE-conference-template-062824.tex" 1778925323 27999 cffeba9cec9904bf2901f1510a4f0de5 ""
   "IEEEtran.cls" 1440654524 288304 5b2e4fa15b0f7eabb840ebf67df4c0f7 ""
-  "c:/Users/HP/OneDrive/Desktop/VKIND_github/VKIND_IEEE_conference_template/IEEE-conference-template-062824/IEEE-conference-template-062824.tex" 1778526824 25072 d39ae267c4b7fe0f0c7b573f2105874d ""
+  "c:/Users/HP/OneDrive/Desktop/VKIND_github/VKIND_IEEE_conference_template/IEEE-conference-template-062824/IEEE-conference-template-062824.tex" 1778925323 27999 cffeba9cec9904bf2901f1510a4f0de5 ""
   "c:/texlive/2024/texmf-dist/fonts/map/fontname/texfonts.map" 1728206116 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "c:/texlive/2024/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1728203658 1004 54797486969f23fa377b128694d548df ""
+  "c:/texlive/2024/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex9.tfm" 1728203658 996 a18840b13b499c08ac2de96a99eda4bc ""
   "c:/texlive/2024/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam10.tfm" 1728203658 916 f87d7c45f9c908e672703b83b72241a3 ""
   "c:/texlive/2024/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam5.tfm" 1728203658 924 9904cf1d39e9767e7a3622f2a125a565 ""
   "c:/texlive/2024/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam7.tfm" 1728203658 928 2dc8d444221b7a635bb58038579b861a ""
   "c:/texlive/2024/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm10.tfm" 1728203658 908 2921f8a10601f252058503cc6570e581 ""
   "c:/texlive/2024/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm5.tfm" 1728203658 940 75ac932a52f80982a9f8ea75d03a34cf ""
   "c:/texlive/2024/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm7.tfm" 1728203658 940 228d6584342e91276bf566bcf9716b83 ""
+  "c:/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmmi6.tfm" 1728204808 1512 f21f83efb36853c0b70002322c1ab3ad ""
+  "c:/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmmi9.tfm" 1728204808 1524 d89e2d087a9828407a196f428428ef4a ""
+  "c:/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmr6.tfm" 1728204808 1300 b62933e007d01cfd073f79b963c01526 ""
+  "c:/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmr9.tfm" 1728204808 1292 6b21b9c2c7bebb38aa2273f7ca0fb3af ""
+  "c:/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmsy6.tfm" 1728204808 1116 933a60c408fc0a863a92debe84b2d294 ""
+  "c:/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmsy9.tfm" 1728204808 1116 25a7bf822c58caf309a702ef79f4afbb ""
   "c:/texlive/2024/texmf-dist/tex/latex/algorithms/algorithmic.sty" 1728203619 9318 793e9d5a71e74e730d97f6bf5d7e2bca ""
   "c:/texlive/2024/texmf-dist/tex/latex/amsfonts/amsfonts.sty" 1728203658 5949 3f3fd50a8cc94c3d4cbf4fc66cd3df1c ""
   "c:/texlive/2024/texmf-dist/tex/latex/amsfonts/amssymb.sty" 1728203658 13829 94730e64147574077f8ecfea9bb69af4 ""
